@@ -16,8 +16,8 @@ const START_SEVER = () => {
 
   app.use(errorHandlingMiddleware)
 
-  app.listen(env.APP_PORT, env.APP_HOST, () => {
-    console.log(`3.Backend server is running at http://${ env.APP_HOST }:${ env.APP_PORT }/`)
+  app.listen(env.APP_HOST, () => {
+    console.log(`3.Backend server is listening on port: ${ env.APP_PORT }`)
   })
 
   existHook(() => {
