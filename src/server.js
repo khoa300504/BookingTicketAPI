@@ -16,9 +16,15 @@ const START_SEVER = () => {
 
   app.use(errorHandlingMiddleware)
 
-  app.listen(env.APP_HOST, () => {
-    console.log(`3.Backend server is listening on port: ${ env.APP_PORT }`)
-  })
+  if (env.BUILD_MODE === 'production') {
+    app.listen(process.env.PORT, () => {
+      console.log(`3. Hi ${env.AUTHOR}, Back-end server is running successfully at PORT: ${process.env.PORT}`)
+    })
+  } else {
+    app.listen(env.APP_PORT, env.APP_HOST, () => {
+      console.log(`Local Dev: 3. Hi ${env.AUTHOR}, Back-end server is running successfully at Host: ${env.APP_HOST} and Port: ${env.APP_PORT}`)
+    })
+  }
 
   existHook(() => {
     console.log('4.Disconnecting from MongoDb Clound Atlas...')
