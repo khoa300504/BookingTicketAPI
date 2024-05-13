@@ -5,12 +5,12 @@ import existHook from 'async-exit-hook'
 import { env } from './config/environment'
 import { APIs_V1 } from '~/routes/v1'
 import { errorHandlingMiddleware } from './middlewares/errorHandlingMiddleware'
-// import cors from 'cors'
-// import { corsOptions } from './config/cors'
+import cors from 'cors'
 
 const START_SEVER = () => {
   const app = express()
   app.use(express.json())
+  app.use(cors())
 
   app.use('/v1', APIs_V1)
 
