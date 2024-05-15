@@ -22,8 +22,16 @@ const getFilmDetail = async (req, res, next) => {
   } catch (error) { next(error) }
 }
 
+const getFilmTicket = async (req, res, next) => {
+  try {
+    const filmDetail = await movieService.getFilmTicket(req.params)
+    res.status(StatusCodes.OK).json(filmDetail)
+  } catch (error) { next(error) }
+}
+
 export const movieController = {
   getListFilm,
   getListGenres,
-  getFilmDetail
+  getFilmDetail,
+  getFilmTicket
 }

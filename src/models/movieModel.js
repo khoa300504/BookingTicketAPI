@@ -4,6 +4,7 @@ import { GET_DB } from '~/config/mongodb'
 const LISTMOVIE_COLLECTION_NAME = 'listmovies'
 const MOVIE_COLLECTION_NAME = 'movie'
 const GENRES_COLLECTION_NAME = 'genres'
+const TICKET_COLLECTION_NAME = 'ticket'
 
 const findOneListFilm = async (listFilmPage) => {
   let id
@@ -35,8 +36,18 @@ const findOneFilmDetail = async (filmId) => {
   return result
 }
 
+const findOneFilmTicket = async (filmId) => {
+  const query = { movieId: parseInt(filmId) }
+  const option = {
+    projection: { _id: 0 }
+  }
+  const result = await GET_DB().collection(TICKET_COLLECTION_NAME).findOne(query, option)
+  return result
+}
+
 export const movieModel = {
   findOneListFilm,
   findListGenres,
-  findOneFilmDetail
+  findOneFilmDetail,
+  findOneFilmTicket
 }

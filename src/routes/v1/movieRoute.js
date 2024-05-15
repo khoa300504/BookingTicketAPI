@@ -16,6 +16,9 @@ Router.route('/genres')
 Router.route('/:id')
   .get(movieController.getFilmDetail)
 
+Router.route('/ticket/:id')
+  .get(movieController.getFilmTicket)
+
 // Router.route('/delete/:id')
 //   .delete(protectRoute, postController.DeletePost)
 

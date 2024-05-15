@@ -21,8 +21,16 @@ const getFilmDetail = async (reqParams) => {
   } catch (error) { throw error }
 }
 
+const getFilmTicket = async (reqParams) => {
+  try {
+    const filmId = reqParams.id
+    return await movieModel.findOneFilmTicket(filmId)
+  } catch (error) { throw error }
+}
+
 export const movieService = {
   getListFilm,
   getListGenres,
-  getFilmDetail
+  getFilmDetail,
+  getFilmTicket
 }
