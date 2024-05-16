@@ -7,8 +7,8 @@ import { ticketController } from '~/controllers/ticketController'
 
 const Router = express.Router()
 
-// Router.route('/:id')
-//   .get(postController.getPost)
+Router.route('/')
+  .get(ticketController.getTicketDetail)
 
 Router.route('/create')
   .post(ticketController.createNew)

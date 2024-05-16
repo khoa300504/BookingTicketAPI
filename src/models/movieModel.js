@@ -45,9 +45,26 @@ const findOneFilmTicket = async (filmId) => {
   return result
 }
 
+
+// const updateSeat = async (userId, updateData) => {
+//   try {
+//     Object.keys(updateData).forEach(field => {
+//       if (INVALID_UPDATE_FIELDS.includes(field))
+//         delete updateData[field]
+//     })
+//     const result = GET_DB().collection(TICKET_COLLECTION_NAME).findOneAndUpdate(
+//       { _id: new ObjectId(userId) },
+//       { $set: updateData },
+//       { returnDocument: 'after' }
+//     )
+//     return result
+//   } catch (error) {throw new Error(error)}
+// }
+
 export const movieModel = {
   findOneListFilm,
   findListGenres,
   findOneFilmDetail,
-  findOneFilmTicket
+  findOneFilmTicket,
+  // updateSeat
 }

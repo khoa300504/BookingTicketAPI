@@ -8,6 +8,14 @@ const createNew = async (req, res, next) => {
   } catch (error) { next(error) }
 }
 
+const getTicketDetail = async (req, res, next) => {
+  try {
+    const allTicketDetail = await ticketService.getTicketDetail()
+    res.status(StatusCodes.OK).json(allTicketDetail)
+  } catch (error) { next(error) }
+}
+
 export const ticketController = {
-  createNew
+  createNew,
+  getTicketDetail
 }
