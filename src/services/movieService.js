@@ -1,9 +1,9 @@
 /* eslint-disable no-useless-catch */
 import { movieModel } from '~/models/movieModel'
 
-const getListFilm = async (reqBody) => {
+const getListFilm = async (reqQuery) => {
   try {
-    const listFilmPage = reqBody.page
+    const listFilmPage = reqQuery.page
     return await movieModel.findOneListFilm(listFilmPage)
   } catch (error) { throw error }
 }
@@ -28,9 +28,22 @@ const getFilmTicket = async (reqParams) => {
   } catch (error) { throw error }
 }
 
+const filmSearch = async (reqQuery) => {
+  try {
+    const filmName = reqQuery.name
+    const listFilm = await movieModel.findAllFilm()
+    const trueFilm = []
+    listFilm.forEach(f => {
+      if (f.title.toLowerCase().includes(filmName.toLowerCase())) trueFilm.push(f)
+    })
+    return trueFilm
+  } catch (error) { throw error }
+}
+
 export const movieService = {
   getListFilm,
   getListGenres,
   getFilmDetail,
-  getFilmTicket
+  getFilmTicket,
+  filmSearch
 }

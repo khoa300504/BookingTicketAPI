@@ -27,6 +27,15 @@ const findListGenres = async () => {
   return result
 }
 
+const findAllFilm = async () => {
+  const query = { id: { $gte: 1, $lte: 10 } }
+  const option = {
+    projection: { _id: 0 }
+  }
+  const result = await GET_DB().collection(MOVIE_COLLECTION_NAME).find(query, option).toArray()
+  return result
+}
+
 const findOneFilmDetail = async (filmId) => {
   const query = { id: parseInt(filmId) }
   const option = {
@@ -66,5 +75,6 @@ export const movieModel = {
   findListGenres,
   findOneFilmDetail,
   findOneFilmTicket,
+  findAllFilm,
   // updateSeat
 }
