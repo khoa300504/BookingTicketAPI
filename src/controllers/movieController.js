@@ -31,7 +31,7 @@ const getFilmTicket = async (req, res, next) => {
 
 const filmSearch = async (req, res, next) => {
   try {
-    const filmFind = await movieService.filmSearch(req.query)
+    const filmFind = await movieService.filmSearch(req.params)
     res.status(StatusCodes.OK).json(filmFind)
   } catch (error) { next(error) }
 }

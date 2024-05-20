@@ -28,9 +28,9 @@ const getFilmTicket = async (reqParams) => {
   } catch (error) { throw error }
 }
 
-const filmSearch = async (reqQuery) => {
+const filmSearch = async (reqParams) => {
   try {
-    const filmName = reqQuery.name
+    const filmName = reqParams.name
     const listFilm = await movieModel.findAllFilm()
     const trueFilm = []
     listFilm.forEach(f => {

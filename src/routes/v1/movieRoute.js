@@ -16,8 +16,8 @@ Router.route('/genres')
 Router.route('/:id')
   .get(movieController.getFilmDetail)
 
-Router.route('/search/')
-  .post(movieController.filmSearch)
+Router.route('/search/:name')
+  .get(movieController.filmSearch)
 
 Router.route('/ticket/:id')
   .get(movieController.getFilmTicket)
