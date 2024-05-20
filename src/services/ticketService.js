@@ -7,8 +7,11 @@ const createNew = async (reqBody) => {
     const newTicket = {
       ...reqBody
     }
-    const seat = { seat: 1 }
+    const { movieId, seat } = newTicket
+    console.log('🚀 ~ createNew ~ seat:', seat)
+    console.log('🚀 ~ createNew ~ movieId:', movieId)
     const result = await ticketModel.createNew(newTicket)
+    await movieModel.updateSeat(movieId, seat)
     if (result.insertedId) return true
     else return false
   } catch (error) { throw error }
