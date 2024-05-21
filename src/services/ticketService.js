@@ -4,12 +4,13 @@ import { ticketModel } from '~/models/ticketModel'
 /* eslint-disable no-useless-catch */
 const createNew = async (reqBody) => {
   try {
+    const { movieId, seat } = reqBody
+    const filmDetail = await movieModel.findOneFilmDetail(movieId)
+    const { title } = filmDetail
     const newTicket = {
-      ...reqBody
+      ...reqBody,
+      title
     }
-    const { movieId, seat } = newTicket
-    console.log('🚀 ~ createNew ~ seat:', seat)
-    console.log('🚀 ~ createNew ~ movieId:', movieId)
     const result = await ticketModel.createNew(newTicket)
     await movieModel.updateSeat(movieId, seat)
     if (result.insertedId) return true
